@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import DateText from './components/DateText';
+import Plan from './components/Plan';
+import Schedule from './components/Schedule';
 
 function App() {
+  const [plans, setPlans] = useState([]);
+
+  function addPlanTag(plan) {
+    setPlans([...plans, plan]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <DateText />
+      <Plan propFunction={addPlanTag} />
+      <Schedule plans={plans} />
     </div>
-  );
+  )
 }
 
 export default App;
